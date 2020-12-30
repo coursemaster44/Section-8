@@ -194,7 +194,7 @@ Click on BuildArtifacts and SourceArtifacts to see more details
 # End of lab
 
 
-# cp-ebs-lab
+# cp-ebs-lab-3
 
 **Step 1.AWS Console>Services>Elastic Beanstalk>Create Application**
 - Create a web app
@@ -280,6 +280,94 @@ $ git push
 
 # End of Lab
 
+# cp-staging-preprod-prod-lab-1
+
+**Step 1.Open cp-ebs pipeline (Refer ebs lab)**
+- Click on Edit
+  - Edit:Deploy>+Add stage
+    - Give stage name - Pre-prod
+	- Click on Add stage
+
+**Step 2.Goto Pre-prod stage>+Add action group**
+- Action name - Approval-1
+- Action provider - Manual approval
+- SNS topic ARN - arn:aws:sns:ap-south-1xxxxx-Topic
+- URL for review - Copy Sample-node-env URL	
+
+Click on Done
+
+**Step 3.Pre-prod>Approval-1>+ Add action group
+- Action name - single-ec2-deployment
+- Action provider - AWS CodeDeploy
+- Region - Asia Pacific(Mumbai)
+- Input artifacts - BuildArtifact
+- Application name - cd-app
+- Deployment group - cd-app-dg
+
+Click on Done
+
+**Step 4.Click on ADD stage**
+- Stage name - Prod
+- Click on Add stage
+
+**Step 5.In Prod stage click + Add action group**
+- Action name - Approval-2
+- Action provider - Manual approval
+- SNS topic ARN - arn:aws:sns:ap-south-1xxxxx-Topic
+- URL for review - http://13.232.176.111:3000/	
+
+Click on Done
+
+**Step 6.In Prod stage click + Add action group**
+- Action name - Multiple-ec2-deployment
+- Action provider - AWS CodeDeploy
+- Region - Asia Pacific(Mumbai)
+- Input artifacts - BuildArtifact
+- Application name - cd-app
+- Deployment group - cd-app-asg-alb
+
+To save Pipeline - Click on Save 
+
+**Step 7. See that Pipeline has been started**
+
+# End of Lab
+
+# cp-staging-preprod-prod-lab-2
+
+**Step 1.Goto "cp-ebs" Pipeline**
+- Click on Release change>Release
+
+**Step 2.Pipeline has been started**
+- Source stage completed
+- Build stage completed
+- Deploy stage completed on Elastic BeanStalk
+- Pre-prod stage -Waiting for approval
+
+**Step 3.Goto your Email-Inbox to approve the Pre-prod stage**
+- Search for email with Subject:APPROVAL NEEDED: AWS CodePipeline-cp-ebs for action Approval-1
+- Click on link to Approve
+
+**Step 4.Go back to Pipeline and click on Review in Pre-prod stage**
+- Give approval comment
+- Click on Approve
+
+**Step 5.Pre-prod "single-ec2-deployment" started after approval**
+
+**Step 6.Goto your Email-Inbox to approve the Prod stage**
+- Search for email with Subject:APPROVAL NEEDED: AWS CodePipeline-cp-ebs for action Approval-2
+- Click on link to Approve
+
+**Step 7.Go back to Pipeline and click on Review in Prod stage**
+- Give approval comment
+- Click on Approve
+
+**Step 8.Deployment to Multiple-ec2-deployment is succeeded**
+
+**Step 9.To Validate it Goto Ec2>Load Balancers>alb-cd>Copy DNS name**
+- Paste it in browser to see it running
+- Refresh it and see that both Instances are receving traffic by ALB**
+
+# End of lab
 
 
 
