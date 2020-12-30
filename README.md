@@ -296,7 +296,7 @@ $ git push
 
 Click on Done
 
-**Step 3.Pre-prod>Approval-1>+ Add action group
+**Step 3.Pre-prod>Approval-1>+ Add action group**
 - Action name - single-ec2-deployment
 - Action provider - AWS CodeDeploy
 - Region - Asia Pacific(Mumbai)
@@ -365,7 +365,7 @@ To save Pipeline - Click on Save
 
 **Step 9.To Validate it Goto Ec2>Load Balancers>alb-cd>Copy DNS name**
 - Paste it in browser to see it running
-- Refresh it and see that both Instances are receving traffic by ALB**
+- Refresh it and see that both Instances are receving traffic by ALB
 
 # End of lab
 
