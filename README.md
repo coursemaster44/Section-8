@@ -97,7 +97,7 @@ $ git push
 
 # cp-asg-alb-lab
 
-** Step 1.Goto Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb>
+**Step 1.Goto Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
 - Click to edit deployment group
   - In Deployment type - Select In-Place
   - Click on Save changes
@@ -180,7 +180,7 @@ $ git push
 - See the latest commit - "change in index color for cp-asg-alb "
 - Monitor all stages Build>Source>Deploy
 
-**Step 17.Developers Tools>CodeBuild>Build projects>first-cd-project
+**Step 17.Developers Tools>CodeBuild>Build projects>first-cd-project**
 - click on In-progress Build
   - Goto Phase details to see the status
   
