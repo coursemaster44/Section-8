@@ -95,7 +95,7 @@ $ git push
 # End of lab
 
 
-# cp-asg-alb-lab
+# cp-asg-alb-lab-2
 
 **Step 1.Goto Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
 - Click to edit deployment group
