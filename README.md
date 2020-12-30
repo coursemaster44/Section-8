@@ -272,7 +272,7 @@ $ git push
 - Pipeline is activated Just now
 - See the latest commit - "change in index color for ebs dep with cp "
 - Monitor all stages Build>Source>Deploy
--
+
 
 **Step 12.Deployment has been completed** 
 - Refresh the Sample-node-env link
