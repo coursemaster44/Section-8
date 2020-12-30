@@ -83,7 +83,7 @@ $ git push
 **Step 16.Go back to see the change in Pipeline**
 - Pipeline is activated Just now
 - See the latest commit - "change in index color for cp "
-- Mointor all stages Build>Source>Deploy
+- Monitor all stages Build>Source>Deploy
 
 **Step 17. To see what is happening click on AWS CodeBuild**
 - Developers Tools>CodeBuild>Build projects>first-cd-project>Build History
@@ -93,3 +93,106 @@ $ git push
 - Task completed
 
 # End of lab
+
+
+# cp-asg-alb-lab
+
+** Step 1.Goto Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb>
+- Click to edit deployment group
+  - In Deployment type - Select In-Place
+  - Click on Save changes
+Now deployment group is updated
+
+**Step 2.In Pipeline Settings give following details:**
+- Pipeline name - cp-asg-alb
+- Service role - Select Existing service role
+- Select Allow AWS CodePipeline to create a service role
+- Advanced settings
+  - Artifact store - Default location
+  - Encryption key - Default AWS Managed key
+
+Click on Next
+
+**Step3-Source in Add source stage:**
+- Source provider - AWS CodeCommit
+- Repository name - Sample-Node-App
+- Branch name - master
+- Change detection options - Amazon CloudWatch Events
+- CodePipeline - CodePipeline default
+
+Click on Next
+
+**Step 4.Build - optional in Add build stage**
+- Build provider - AWS code build
+- Region - Asia Pacific(Mumbai)
+- Project name - first-cd-project
+- Build type - Single build
+
+Click on Next
+
+**Step 5.Deploy-optional in Add deploy stage**
+- Deploy provider - AWS CodeDeploy
+- Region - Asia Pacific(Mumbai)
+- Application name - cd-app
+- Deployment group - cd-app-asg-alb
+
+Click on Next
+
+**Step 6.Review all stages**
+- Before creating pipeline confirm that Ec2 instances are running in EC2>AutoScalingGroup
+- Click on Create pipeline
+
+**Step 7. The pipeline has been created**
+- Monitor the progress of all the stages Build>Source>Deploy
+
+**Step 8.Goto S3>Buckets>codepipeline-ap-south-1-xxxxxx**
+- Now Goto Objects>cp-asg-alb>BuildArtif/>xxxx
+
+**Step 9.Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
+- Click to see deployment details and history
+
+**Step 10.Goto Ec2>target groups to see that no instances are there due to deregistration for deployment**
+
+**Step 11.Goto Load Balancers and click on its Dns**
+- 502 bad gateway error
+
+**Step 12.Goto EC2>target groups>Registered target**
+- 2 targets are registered
+
+**Step 13.Goto Load Balancers and click on its Dns**
+- See ALB is sending traffic to these targets
+
+**Step 14.Go back to see the Pipeline progress**
+- Deployment is completed
+
+**Step 15.Open Visual Studio Code and goto pages>index.ejs**
+- Edit the file for new color
+- Save it
+- Run the following command
+```sh
+$ git add .
+$ git commit -m "change in index color for cp-asg-alb "
+$ git push
+```
+
+**Step 16.Go back to see the change in Pipeline**
+- Pipeline is activated Just now
+- See the latest commit - "change in index color for cp-asg-alb "
+- Monitor all stages Build>Source>Deploy
+
+**Step 17.Developers Tools>CodeBuild>Build projects>first-cd-project
+- click on In-progress Build
+  - Goto Phase details to see the status
+  
+**Step 18.Goto S3>Buckets>codepipeline-ap-south-1-xxxxxx**
+- Now Goto Objects>cp-asg-alb
+  - BuildArtif/>xxxx
+  - SourceArti/
+
+Click on BuildArtifacts and SourceArtifacts to see more details
+
+# End of lab
+
+
+
+
