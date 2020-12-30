@@ -194,5 +194,117 @@ Click on BuildArtifacts and SourceArtifacts to see more details
 # End of lab
 
 
+# cp-ebs-lab
+
+**Step 1.AWS Console>Services>Elastic Beanstalk>Create Application**
+- Create a web app
+  - Application Name- sample-node
+  - Platform 
+    - Platform 
+      - Node.js
+   - Platform branch
+      - Node.js 12 running on 64bit Amazon Llinux2
+   - Platform version
+      - 5.2.3(Recommended)
+   - Application Code - Select Sample application
+
+Click on Create Application.
+
+**Step 2. Creating environment started**
+- Elastic BeanStalk launches an environment named SampleNode-env
+- Click on SampleNode-env to see it running
+
+**Step 3. In Pipeline Settings give following details:**
+- Pipeline name - cp-ebs
+- Service role - Select Existing service role
+- Select Allow AWS CodePipeline to create a service role
+- Advanced settings
+  - Artifact store - Default location
+  - Encryption key - Default AWS Managed key
+
+Click on Next
+
+**Step 4.Source in Add source stage:**
+- Source provider - AWS CodeCommit
+- Repository name - Sample-Node-App
+- Branch name - master
+- Change detection options - Amazon CloudWatch Events
+- CodePipeline - CodePipeline default
+
+Click on Next
+
+**Step 5.Build - optional in Add build stage**
+- Build provider - AWS code build
+- Region - Asia Pacific(Mumbai)
+- Project name - first-cd-project
+- Build type - Single build
+
+Click on Next
+
+**Step 6.Deploy-optional in Add deploy stage**
+- Deploy provider - AWS Elastic BeanStalk
+- Region - Asia Pacific(Mumbai)
+- Application name - sample-node
+- Deployment group - Sample-node-env
+
+Click on Next
+
+**Step 7.Review all stages**
+- Click on Create pipeline
+
+**Step 8. The pipeline has been created**
+- Monitor progress of all the stages Build>Source>Deploy
+
+**Step 9 Deployment has been completed** 
+- Refresh the Sample-node-env link 
+- See that it is running
+
+**Step 10.Open Visual Studio Code and goto pages>index.ejs**
+- Edit the file for new color
+- save it
+- Run the following command
+```sh
+$ git add .
+$ git commit -m "changed in index color for ebs dep with cp "
+$ git push
+```
+**Step 11.Go back to see the change in Pipeline**
+- Pipeline is activated Just now
+- See the latest commit - "change in index color for ebs dep with cp "
+- Monitor all stages Build>Source>Deploy
+-
+
+**Step 12.Deployment has been completed** 
+- Refresh the Sample-node-env link
+- See that color is changed
+
+# End of Lab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
