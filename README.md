@@ -369,7 +369,39 @@ To save Pipeline - Click on Save
 
 # End of lab
 
+# Section 7-8-cleanup-lab
 
+**Step 1.Goto Ec2 Dashboard>AutoScalingGroup>Auto Scaling groups**
+- Select ASG to Delete>Confirm delete
+
+**Step 2.Goto Ec2 Dashboard and Terminate node-server single Instance**
+
+**Step 3.Goto Elastic BeanStalk>Environments>Sample-Node-App**
+- Click on Actions>Terminate Environment>Confirm termination
+
+**Step 4.Goto Developers Tools>CodePipeline>Pipelines**
+- Select cp-ebs Pipeline>Confirm to delete cp-ebs
+
+- Select cp-asg-alb Pipeline>Confirm to delete cp-asg-alb
+
+- Select first-cp-single-ec2 Pipeline>Confirm to delete first-cp-single-ec2
+
+
+**Step 5.Goto Developers Tools>CodeDeploy>Applications**
+- Select cd-app>Delete Application>Confirm to delete cd-app
+
+**Step 6.Goto Developers Tools>CodeBuild>Build projects**
+- Select cb-project-s3>Delete Build project>Delete>Confirm delete
+
+- Select first-cd-project>Delete Build project>Delete>Confirm delete
+
+**Step 7.Goto Ec2>Target groups**
+- Select and delete the target group
+
+**Step 8.Goto Ec2>Load Balancers**
+- Select and delete the load balancer
+
+# End of lab
 
 
 
