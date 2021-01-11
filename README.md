@@ -106,7 +106,6 @@ Now deployment group is updated
 **Step 2.In Pipeline Settings give following details:**
 - Pipeline name - cp-asg-alb
 - Service role - Select Existing service role
-- Select Allow AWS CodePipeline to create a service role
 - Advanced settings
   - Artifact store - Default location
   - Encryption key - Default AWS Managed key
@@ -217,7 +216,6 @@ Click on Create Application.
 **Step 3. In Pipeline Settings give following details:**
 - Pipeline name - cp-ebs
 - Service role - Select Existing service role
-- Select Allow AWS CodePipeline to create a service role
 - Advanced settings
   - Artifact store - Default location
   - Encryption key - Default AWS Managed key
