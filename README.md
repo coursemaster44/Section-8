@@ -36,6 +36,7 @@ Click on Next
 - Region - Asia Pacific(Mumbai)
 - Application name - cd-app
 - Deployment group - cd-app-dg (Created in section-7)
+- We will use node-server Ec2 instance (Created in section-7)
 
 Click on Next
 
@@ -50,19 +51,19 @@ Click on Next
   - Click on Object URI - It is Not Public
 
 **Step 9.Go back to see the Pipeline progress**
-- Source stage is completed and Source Artfacts are created in S3
+- Source stage is completed and Source Artifacts are created in S3
 - Build is in progress
-  - After the build completion Build Artfacts will be created
+  - After the build completion Build Artifacts will be created
 
 **Step 10.Goto S3>Buckets>codepipeline-ap-south-1-xxxxxx**
 - Now Goto Objects>first-cp-single-ec2/>BuildArtif/>xxxx
  
 **Step 11.Go back to see the Pipeline progress**
-- Build stage is completed and Build Artfacts are created in S3
-- Deploy is succeeded
+- Build stage is completed and Build Artifacts are created in S3
+- Deployment is succeeded
 
-**Step 12.Deploy is completed**
-- Copy the Public ip address and paste in browser to see that Application running
+**Step 12.Deployment is completed**
+- Copy the Public ip address and paste in browser to see that Application running 
 
 **Step 13.Goto CloudWatch>Events>Rules>codepipeline-Sample-master-640051-rule**
 - See the Summary of Event pattern
@@ -73,14 +74,14 @@ Click on Next
 **Step 15.Open Visual Studio Code and goto pages>index.ejs**
 - Edit the file for new color
 - save it
-- Run the following command
+- Run the following commands
 ```sh
 $ git add .
 $ git commit -m "change in index color for cp "
 $ git push
 ```
 
-**Step 16.Go back to see the change in Pipeline**
+**Step 16.Go back to see activation of Pipeline for the changes**
 - Pipeline is activated Just now
 - See the latest commit - "change in index color for cp "
 - Monitor all stages Build>Source>Deploy
@@ -89,8 +90,8 @@ $ git push
 - Developers Tools>CodeBuild>Build projects>first-cd-project>Build History
 - Developers Tools>CodeDeploy>Applications>cd-app>cd-app-dg>deployment-id>deployment status
 
-**Step 18.Copy the Public ip and paste in browser to see that Application is running with different color**
-- Task completed
+**Step 18.Copy the Public ip and paste in the browser to see that Application is running with different color**
+- Task has been completed
 
 # End of lab
 
