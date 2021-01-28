@@ -290,13 +290,14 @@ $ git push
 
 # cp-staging-preprod-prod-lab-1
 
-**Step 1.Open cp-ebs pipeline (Refer ebs lab)**
+**Step 1.Goto Developer Tools>CodePipeline>Pipelines>cp-ebs pipeline (Refer Previous Elasticbeanstalk lab)**
 - Click on Edit
   - Edit:Deploy>+Add stage
     - Give stage name - Pre-prod
-	- Click on Add stage
+    - Click on Add stage
 
 **Step 2.Goto Pre-prod stage>+Add action group**
+In edit action:
 - Action name - Approval-1
 - Action provider - Manual approval
 - SNS topic ARN - arn:aws:sns:ap-south-1xxxxx-Topic
@@ -304,7 +305,8 @@ $ git push
 
 Click on Done
 
-**Step 3.Pre-prod>Approval-1>+ Add action group**
+**Step 3.Pre-prod>+ Add action group**
+In edit action:
 - Action name - single-ec2-deployment
 - Action provider - AWS CodeDeploy
 - Region - Asia Pacific(Mumbai)
@@ -314,7 +316,7 @@ Click on Done
 
 Click on Done
 
-**Step 4.Click on ADD stage**
+**Step 4.Goto cp-ebs pipeline>Click on ADD stage**
 - Stage name - Prod
 - Click on Add stage
 
@@ -327,6 +329,7 @@ Click on Done
 Click on Done
 
 **Step 6.In Prod stage click + Add action group**
+In Edit action:
 - Action name - Multiple-ec2-deployment
 - Action provider - AWS CodeDeploy
 - Region - Asia Pacific(Mumbai)
@@ -342,24 +345,25 @@ To save Pipeline - Click on Save
 
 # cp-staging-preprod-prod-lab-2
 
-**Step 1.Goto "cp-ebs" Pipeline**
+**Step 1.Goto Developer Tools>CodePipeline>Pipelines>"cp-ebs" Pipeline**
 - Click on Release change>Release
 
 **Step 2.Pipeline has been started**
+Monitor the following stages:
 - Source stage completed
 - Build stage completed
 - Deploy stage completed on Elastic BeanStalk
 - Pre-prod stage -Waiting for approval
 
-**Step 3.Goto your Email-Inbox to approve the Pre-prod stage**
-- Search for email with Subject:APPROVAL NEEDED: AWS CodePipeline-cp-ebs for action Approval-1
+**Step 3.Goto your Inbox of your Email(Given in SNS topic) to approve the Pre-prod stage**
+- Search for email with Subject:APPROVAL NEEDED: AWS CodePipeline cp-ebs for action Approval-1
 - Click on link to Approve
 
 **Step 4.Go back to Pipeline and click on Review in Pre-prod stage**
 - Give approval comment
 - Click on Approve
 
-**Step 5.Pre-prod "single-ec2-deployment" started after approval**
+**Step 5.Pre-prod stage "single-ec2-deployment" is started after approval**
 
 **Step 6.Goto your Email-Inbox to approve the Prod stage**
 - Search for email with Subject:APPROVAL NEEDED: AWS CodePipeline-cp-ebs for action Approval-2
@@ -369,9 +373,11 @@ To save Pipeline - Click on Save
 - Give approval comment
 - Click on Approve
 
-**Step 8.Deployment to Multiple-ec2-deployment is succeeded**
+**Step 8.Deployment to Multiple-ec2-deployment is started after getting approval**
 
-**Step 9.To Validate it Goto Ec2>Load Balancers>alb-cd>Copy DNS name**
+**Step 9.Deployment to Multiple-ec2-deployment is succeeded**
+
+**Step 10.To Validate it Goto Ec2 Dashboard>Load Balancers>alb-cd>Copy DNS name**
 - Paste it in browser to see it running
 - Refresh it and see that both Instances are receving traffic by ALB
 
@@ -388,10 +394,9 @@ To save Pipeline - Click on Save
 - Click on Actions>Terminate Environment>Confirm termination
 
 **Step 4.Goto Developers Tools>CodePipeline>Pipelines**
+Do the following steps:
 - Select cp-ebs Pipeline>Confirm to delete cp-ebs
-
 - Select cp-asg-alb Pipeline>Confirm to delete cp-asg-alb
-
 - Select first-cp-single-ec2 Pipeline>Confirm to delete first-cp-single-ec2
 
 
@@ -399,6 +404,7 @@ To save Pipeline - Click on Save
 - Select cd-app>Delete Application>Confirm to delete cd-app
 
 **Step 6.Goto Developers Tools>CodeBuild>Build projects**
+Do the following steps:
 - Select cb-project-s3>Delete Build project>Delete>Confirm delete
 
 - Select first-cd-project>Delete Build project>Delete>Confirm delete
@@ -406,7 +412,7 @@ To save Pipeline - Click on Save
 **Step 7.Goto Ec2>Target groups**
 - Select and delete the target group
 
-**Step 8.Goto Ec2>Load Balancers**
+**Step 8.Goto Ec2 Dashboard>Load Balancers**
 - Select and delete the load balancer
 
 # End of lab
