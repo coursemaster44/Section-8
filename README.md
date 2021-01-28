@@ -99,8 +99,8 @@ $ git push
 # cp-asg-alb-lab-2
 
 **Step 1.Goto Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
-- Click to edit deployment group
-  - In Deployment type - Select In-Place
+- Click to edit deployment group (Deployment group was created in previous lab)
+- In Deployment type - Select In-Place
   - Click on Save changes
 Now deployment group is updated
 
@@ -153,7 +153,7 @@ Click on Next
 
 **Step 10.Goto Ec2>target groups to see that no instances are there due to deregistration for deployment**
 
-**Step 11.Goto Load Balancers and click on its Dns**
+**Step 11.Goto Load Balancers and click on its DNS
 - 502 bad gateway error
 
 **Step 12.Goto EC2>target groups>Registered target**
