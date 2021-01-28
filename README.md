@@ -156,35 +156,42 @@ Click on Next
 **Step 11.Goto Load Balancers and click on its DNS
 - 502 bad gateway error
 
-**Step 12.Goto EC2>target groups>Registered target**
+**Step 12.Goto EC2>load balancing>target groups>Registered target**
+
 - 2 targets are registered
 
-**Step 13.Goto Load Balancers and click on its Dns**
+**Step 13.Goto Load Balancers and click on its DNS**
+
 - See ALB is sending traffic to these targets
 
 **Step 14.Go back to see the Pipeline progress**
-- Deployment is completed
+
+- Deployment has been completed
 
 **Step 15.Open Visual Studio Code and goto pages>index.ejs**
 - Edit the file for new color
 - Save it
-- Run the following command
+- Run the following commands
 ```sh
 $ git add .
-$ git commit -m "change in index color for cp-asg-alb "
+$ git commit -m "changed index color for cp-asg-alb "
 $ git push
 ```
 
 **Step 16.Go back to see the change in Pipeline**
-- Pipeline is activated Just now
-- See the latest commit - "change in index color for cp-asg-alb "
+- Pipeline is activated 
+- See the latest commit - "changed index color for cp-asg-alb "
 - Monitor all stages Build>Source>Deploy
 
 **Step 17.Developers Tools>CodeBuild>Build projects>first-cd-project**
-- click on In-progress Build
+- Click on In-progress Build
   - Goto Phase details to see the status
-  
-**Step 18.Goto S3>Buckets>codepipeline-ap-south-1-xxxxxx**
+ 
+**Step 18.Developers Tools>CodeBuild>Build projects>first-cd-project**
+
+- Goto DNS of load balancer and see that it is serving traffic
+
+**Step 19.Goto S3>Buckets>codepipeline-ap-south-1-xxxxxx**
 - Now Goto Objects>cp-asg-alb
   - BuildArtif/>xxxx
   - SourceArti/
@@ -208,13 +215,15 @@ Click on BuildArtifacts and SourceArtifacts to see more details
       - 5.2.3(Recommended)
    - Application Code - Select Sample application
 
-Click on Create Application.
+Click on Create Application
 
 **Step 2. Creating environment started**
 - Elastic BeanStalk launches an environment named SampleNode-env
 - Click on SampleNode-env to see it running
 
-**Step 3. In Pipeline Settings give following details:**
+**Step 3.Goto Developer Tools>CodePipeline>Pipelines>Create new pipeline**
+
+In Pipeline Settings give following details:
 - Pipeline name - cp-ebs
 - Service role - Select Existing service role
 - Advanced settings
@@ -256,20 +265,20 @@ Click on Next
 
 **Step 9 Deployment has been completed** 
 - Refresh the Sample-node-env link 
-- See that it is running
+- See that application is running
 
 **Step 10.Open Visual Studio Code and goto pages>index.ejs**
 - Edit the file for new color
 - save it
-- Run the following command
+- Run the following commands
 ```sh
 $ git add .
-$ git commit -m "changed in index color for ebs dep with cp "
+$ git commit -m "changed index color for ebs dep with cp "
 $ git push
 ```
 **Step 11.Go back to see the change in Pipeline**
 - Pipeline is activated Just now
-- See the latest commit - "change in index color for ebs dep with cp "
+- See the latest commit - "changed in index color for ebs dep with cp "
 - Monitor all stages Build>Source>Deploy
 
 
