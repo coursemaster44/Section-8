@@ -1,7 +1,8 @@
 # Section-8
 # Deploying-Sample-App-on-AWS-(With-CodePipeline)
 
-# cp-singleec2-lab-1
+# Deploy Sample App with CodePipeline (For Single ec2) - Lab
+
 **Step 1.Goto AWS Management Console>Services>Developers Tools>CodePipeline>Create Pipeline**
 
 **Step 2.In Pipeline Settings give following details:**
@@ -96,7 +97,7 @@ $ git push
 # End of lab
 
 
-# cp-asg-alb-lab-2
+# Deploy Sample App with CodePipeline (ASG + ALB) - Lab
 
 **Step 1.Goto Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
 - Click to edit deployment group (Deployment group was created in previous lab)
@@ -201,7 +202,7 @@ Click on BuildArtifacts and SourceArtifacts to see more details
 # End of lab
 
 
-# cp-ebs-lab-3
+# Deploy Sample App with CodePipeline (Elastic Beanstalk) - Lab
 
 **Step 1.AWS Console>Services>Elastic Beanstalk>Create Application**
 - Create a web app
@@ -288,7 +289,7 @@ $ git push
 
 # End of Lab
 
-# cp-staging-preprod-prod-lab-1
+# Create Stages in CodePipeline - Lab
 
 **Step 1.Goto Developer Tools>CodePipeline>Pipelines>cp-ebs pipeline (Refer Previous Elasticbeanstalk lab)**
 - Click on Edit
@@ -343,7 +344,7 @@ To save Pipeline - Click on Save
 
 # End of Lab
 
-# cp-staging-preprod-prod-lab-2
+# Deploy Sample App with CodePipeline (Staging +Pre-prod + Prod) - Lab
 
 **Step 1.Goto Developer Tools>CodePipeline>Pipelines>"cp-ebs" Pipeline**
 - Click on Release change>Release
@@ -383,7 +384,7 @@ Monitor the following stages:
 
 # End of lab
 
-# Section 7-8-cleanup-lab
+# Section 7&8 Clean-up - Lab
 
 **Step 1.Goto Ec2 Dashboard>AutoScalingGroup>Auto Scaling groups**
 - Select ASG to Delete>Confirm delete
